@@ -28,7 +28,7 @@ src/
 
 ## Requirements
 
-- Python 3.10 or newer
+- Python 3.11–3.12
 - Runtime dependencies from `pyproject.toml`
 - API credentials for the providers configured in
   `src/cfg/task_generation/agent_config.yaml`
@@ -42,6 +42,34 @@ OPENAI_API_KEY
 ```
 
 `OPENAI_API_KEY` is only required when deduplication is enabled.
+
+## Installation
+
+Python 3.10 is no longer supported so the AutoGen image dependency can use
+Pillow 13 or later with its security fixes.
+
+Install Poetry 2.2.1, then install the exact dependency versions from
+`poetry.lock`:
+
+```bash
+poetry install --only main
+cp .env.example .env
+```
+
+Enter your own provider credentials in the local `.env` file. Keep it private;
+do not commit it or include it in release archives. Run the commands below
+inside the Poetry environment, for example:
+
+```bash
+poetry run python -m src.task_generation.runner
+```
+
+## License
+
+This release is licensed under Creative Commons Attribution-NonCommercial-
+NoDerivatives 4.0 International (CC-BY-NC-ND-4.0). See [LICENSE](LICENSE)
+for the full standard terms. Third-party dependencies and user-supplied source
+materials retain their own terms; this licence does not grant rights to them.
 
 ## Configuration
 
@@ -280,3 +308,20 @@ Later on, the capability and areas can be included manually.
 - Keep blueprint counts small for smoke tests.
 - Disable `dedup.enabled` in `agent_config.yaml` if you want to test generation
   without embedding calls.
+
+## Citation
+
+If you use FLAME, please cite our paper,
+[Fine-Grained Benchmark Generation for Comprehensive Evaluation of Foundation Models](https://arxiv.org/abs/2605.18824):
+
+```bibtex
+@misc{islam2026finegrainedbenchmarkgenerationcomprehensive,
+  title={Fine-Grained Benchmark Generation for Comprehensive Evaluation of Foundation Models},
+  author={Mohammed Saidul Islam and Negin Baghbanzadeh and Farnaz Kohankhaki and Afshin Cheraghi and Ali Kore and Shayaan Mehdi and Elham Dolatabadi and Arash Afkanpour},
+  year={2026},
+  eprint={2605.18824},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2605.18824},
+}
+```
