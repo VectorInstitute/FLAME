@@ -1,5 +1,7 @@
 # FLAME Framework
 
+[Paper](https://arxiv.org/abs/2605.18824) · [Dataset](https://huggingface.co/datasets/vector-institute/FLAME)
+
 We introduce **F**ine-grained, **LA**rge-scale **M**odel **E**valuation (FLAME), a framework for automated, comprehensive benchmark generation grounded in external knowledge sources such as textbooks and technical references
 
 ![ACE pipeline overview](src/assets/ACE_pipeline.png)
